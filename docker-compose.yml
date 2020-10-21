@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+
+    mySql-test:
+        image: mysql:8.0.15
+        command: --lower_case_table_names=1
+                 --default-authentication-plugin=mysql_native_password
+        volumes:
+             - ./startup_db_scripts:/docker-entrypoint-initdb.d
+        environment:
+            MYSQL_ROOT_PASSWORD: fleetf@rming
+            MYSQL_DATABASE: fleetfarming_dev
+        ports:
+            - "3308:3306"
+
+
+#clean database
+#docker system prune --volumes
+
+
