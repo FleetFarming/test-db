@@ -25,7 +25,7 @@ CREATE TABLE `addresses` (
   `user_id` INT NOT NULL,
   `street_name` varchar(100) DEFAULT NULL,
   `zipcode` varchar(10) DEFAULT NULL,
-  `state` varchar(5) DEFAULT NULL,
+  `state` varchar(10) DEFAULT NULL,
   `phone_no` VARCHAR (20) DEFAULT NULL,
   PRIMARY KEY (`address_id`),
   FOREIGN KEY (`user_id`) REFERENCES `accounts` (`user_id`)
@@ -52,18 +52,16 @@ CREATE TABLE `farm_crop` (
   FOREIGN KEY (`crop_id`) REFERENCES `crops` (`crop_id`)
 );
 
-CREATE TABLE `profile` (
+CREATE TABLE `profiledata` (
   `profile_id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
-  `photo_id` INT NOT NULL,
-  `farm_id` INT NOT NULL,
   `address_id` INT NOT NULL,
   `description` VARCHAR(255) DEFAULT NULL,
   `profile_name` VARCHAR(50) DEFAULT NULL,
   `is_private` TINYINT(1) DEFAULT 1,
+  `firstName` VARCHAR(20) DEFAULT NULL,
+  `lastName` VARCHAR(30) DEFAULT NULL,
   FOREIGN KEY (`user_id`) REFERENCES `accounts` (`user_id`),
-  FOREIGN KEY (`photo_id`) REFERENCES `photos` (`photo_id`),
-  FOREIGN KEY (`farm_id`) REFERENCES `farms` (`farm_id`),
   FOREIGN KEY (`address_id`) REFERENCES `addresses` (`address_id`),
   PRIMARY KEY (`profile_id`)
 );
