@@ -1,15 +1,8 @@
 DROP TABLE IF EXISTS `useraccount`;
 
-CREATE TABLE `useraccount1` (
-  `user_id` INT NOT NULL AUTO_INCREMENT,
-  `firstName` VARCHAR(50) DEFAULT NULL,
-  `lastName` VARCHAR(50) DEFAULT NULL,
-  PRIMARY KEY (`user_id`)
-);
-
 CREATE TABLE `accounts` (
   `user_id` INT NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 );
@@ -24,8 +17,9 @@ CREATE TABLE `addresses` (
   `address_id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `street_name` varchar(100) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
   `zipcode` varchar(10) DEFAULT NULL,
-  `state` varchar(10) DEFAULT NULL,
+  `state` varchar(50) DEFAULT NULL,
   `phone_no` VARCHAR (20) DEFAULT NULL,
   PRIMARY KEY (`address_id`),
   FOREIGN KEY (`user_id`) REFERENCES `accounts` (`user_id`)
