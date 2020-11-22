@@ -16,6 +16,8 @@ CREATE TABLE `photos` (
 CREATE TABLE `addresses` (
   `address_id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
+  `lat` VARCHAR(20) DEFAULT NULL,
+  `lng` VARCHAR(20) DEFAULT NULL,
   `street_name` varchar(100) DEFAULT NULL,
   `city` varchar(50) DEFAULT NULL,
   `zipcode` varchar(10) DEFAULT NULL,
@@ -27,9 +29,10 @@ CREATE TABLE `addresses` (
 
 CREATE TABLE `farms` (
   `farm_id` INT NOT NULL AUTO_INCREMENT,
-  `farm_name` varchar(100) DEFAULT NULL,
-  `start_date` varchar(10) DEFAULT NULL,
-  `farm_type` varchar(5) DEFAULT NULL,
+  `user_id` INT NOT NULL,
+  `farm_name` varchar(40) DEFAULT NULL,
+  `start_date` varchar(20) DEFAULT NULL,
+  `farm_type` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`farm_id`)
 );
 
@@ -38,6 +41,11 @@ CREATE TABLE `crops` (
   `crop_name` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`crop_id`)
 );
+INSERT INTO crops(crop_name)
+  VALUES('Potato');
+INSERT INTO crops(crop_name)
+  VALUES('Carrots');
+
 
 CREATE TABLE `farm_crop` (
   `farm_id` INT NOT NULL,
@@ -49,13 +57,16 @@ CREATE TABLE `farm_crop` (
 CREATE TABLE `profiledata` (
   `profile_id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
+  `farm_id`  INT NOT NULL,
   `address_id` INT NOT NULL,
   `description` VARCHAR(255) DEFAULT NULL,
   `profile_name` VARCHAR(50) DEFAULT NULL,
   `is_private` TINYINT(1) DEFAULT 1,
   `firstName` VARCHAR(20) DEFAULT NULL,
   `lastName` VARCHAR(30) DEFAULT NULL,
+  `account_date` VARCHAR(20) DEFAULT NULL,
   FOREIGN KEY (`user_id`) REFERENCES `accounts` (`user_id`),
   FOREIGN KEY (`address_id`) REFERENCES `addresses` (`address_id`),
+  FOREIGN KEY (`farm_id`) REFERENCES `farms` (`farm_id`),
   PRIMARY KEY (`profile_id`)
 );
