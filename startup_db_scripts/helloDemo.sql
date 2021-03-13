@@ -107,5 +107,6 @@ CREATE TABLE `farm_layout` (
   `textWidth` VARCHAR(30),
   `textHeight` VARCHAR(30),
   `radius` VARCHAR(30),
-  FOREIGN KEY (`farm_id`) REFERENCES `farms` (`farm_id`)
+  FOREIGN KEY (`farm_id`) REFERENCES `farms` (`farm_id`),
+  PRIMARY KEY (`layout_id`)
 );
