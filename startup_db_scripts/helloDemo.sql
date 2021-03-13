@@ -4,6 +4,7 @@ CREATE TABLE `accounts` (
   `user_id` INT NOT NULL AUTO_INCREMENT,
   `email` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
+  `confirmed` TinyInt(1) DEFAULT 0,
   PRIMARY KEY (`user_id`)
 );
 
@@ -69,4 +70,42 @@ CREATE TABLE `profiledata` (
   FOREIGN KEY (`address_id`) REFERENCES `addresses` (`address_id`),
   FOREIGN KEY (`farm_id`) REFERENCES `farms` (`farm_id`),
   PRIMARY KEY (`profile_id`)
+);
+
+CREATE TABLE `messages` (
+  `message_id` INT NOT NULL AUTO_INCREMENT,
+  `sender_id` INT NOT NULL,
+  `recipient_id` INT NOT NULL,
+  `send_date` VARCHAR(20),
+  `message` VARCHAR(500),
+  `conversation_id` INT NOT NULL,
+  PRIMARY KEY (`message_id`)
+);
+
+CREATE TABLE `conversation` (
+  `conversation_id` INT NOT NULL AUTO_INCREMENT,
+  `subject` VARCHAR(50),
+  `sender_name` VARCHAR(50),
+  `recipient_name` VARCHAR(50),
+  PRIMARY KEY (`conversation_id`)
+);
+
+CREATE TABLE `farm_layout` (
+  `layout_id` INT NOT NULL AUTO_INCREMENT,
+  `farm_id` INT NOT NULL,
+  `groupX` VARCHAR(30),
+  `groupY` VARCHAR(30),
+  `shapeX` VARCHAR(30),
+  `shapeY` VARCHAR(30),
+  `shapeType` VARCHAR(30),
+  `shapeWidth` VARCHAR(30),
+  `shapeHeight` VARCHAR(30),
+  `shapeRotation` VARCHAR(30),
+  `textX` VARCHAR(30),
+  `textY` VARCHAR(30),
+  `textRotation` VARCHAR(30),
+  `textWidth` VARCHAR(30),
+  `textHeight` VARCHAR(30),
+  `radius` VARCHAR(30),
+  FOREIGN KEY (`farm_id`) REFERENCES `farms` (`farm_id`)
 );
