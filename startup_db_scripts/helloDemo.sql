@@ -81,6 +81,7 @@ CREATE TABLE `messages` (
   `sender_name` VARCHAR(50),
   `recipient_name` VARCHAR(50),
   `conversation_id` INT NOT NULL,
+  `subject` VARCHAR(50),
   PRIMARY KEY (`message_id`)
 );
 
