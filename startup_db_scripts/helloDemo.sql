@@ -78,6 +78,8 @@ CREATE TABLE `messages` (
   `recipient_id` INT NOT NULL,
   `send_date` VARCHAR(50),
   `message` VARCHAR(500),
+  `sender_name` VARCHAR(50),
+  `recipient_name` VARCHAR(50),
   `conversation_id` INT NOT NULL,
   PRIMARY KEY (`message_id`)
 );
