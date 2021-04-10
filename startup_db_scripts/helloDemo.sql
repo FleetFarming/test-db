@@ -2,16 +2,19 @@ DROP TABLE IF EXISTS `useraccount`;
 
 CREATE TABLE `accounts` (
   `user_id` INT NOT NULL AUTO_INCREMENT,
-  `email` varchar(50) DEFAULT NULL,
-  `password` varchar(50) DEFAULT NULL,
+  `email` VARCHAR(50) DEFAULT NULL,
+  `password` VARCHAR(50) DEFAULT NULL,
   `confirmed` TinyInt(1) DEFAULT 0,
   PRIMARY KEY (`user_id`)
 );
 
 CREATE TABLE `photos` (
   `photo_id` INT NOT NULL AUTO_INCREMENT,
-  `photo_url` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`photo_id`)
+  `photo_url` VARCHAR(100) DEFAULT NULL,
+  `user_id` INT NOT NULL,
+  `is_profile_picture` TinyInt(1),
+  PRIMARY KEY (`photo_id`),
+  FOREIGN KEY(`user_id`) REFERENCES `accounts` (`user_id`)
 );
 
 CREATE TABLE `addresses` (
