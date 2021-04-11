@@ -85,6 +85,7 @@ CREATE TABLE `messages` (
   `recipient_name` VARCHAR(50),
   `conversation_id` INT NOT NULL,
   `subject` VARCHAR(50),
+  `deleted_by` INT DEFAULT NULL,
   PRIMARY KEY (`message_id`)
 );
 
