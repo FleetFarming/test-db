@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS `useraccount`;
 CREATE TABLE `accounts` (
   `user_id` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(50) DEFAULT NULL,
-  `password` VARCHAR(50) DEFAULT NULL,
+  `password` VARCHAR(150) DEFAULT NULL,
   `confirmed` TinyInt(1) DEFAULT 0,
   PRIMARY KEY (`user_id`)
 );
